@@ -1,0 +1,50 @@
+{
+    "README!!": "Please see config/template.py for instructions. You can remove this in your config json",
+    
+    "name": "kistar_right",
+    "urdf_path": "./assets/kistar_right/model.urdf",
+
+    "base_link": "mount",
+
+    "joint_order": [
+        "thumb_joint_0", "thumb_joint_1", "thumb_joint_2", "thumb_joint_3",
+        "index_joint_0", "index_joint_1", "index_joint_2", "index_joint_3",
+        "middle_joint_0", "middle_joint_1", "middle_joint_2", "middle_joint_3",
+        "ring_joint_0", "ring_joint_1", "ring_joint_2", "ring_joint_3"
+    ],
+
+
+    "fingertip_link": [
+        {
+            "name": "index",
+            "link": "index_tip_end",
+            "joint": ["index_joint_0", "index_joint_1", "index_joint_2", "index_joint_3"],
+            "center_offset": [0.00, 0.0, -0.0],
+            "human_hand_id": 9
+        },
+
+        {
+            "name": "middle",
+            "link": "middle_tip_end",
+            "joint": ["middle_joint_0", "middle_joint_1", "middle_joint_2", "middle_joint_3"],
+            "center_offset": [0.00, 0.0, -0.0],
+            "human_hand_id": 14
+        },
+
+        {
+            "name": "ring",
+            "link": "ring_tip_end",
+            "joint": ["ring_joint_0", "ring_joint_1", "ring_joint_2", "ring_joint_3"],
+            "center_offset": [0.00, 0.0, -0.0],
+            "human_hand_id": 19
+        },
+
+        {
+            "name": "thumb",
+             "link": "thumb_tip_end",
+            "joint": ["thumb_joint_0", "thumb_joint_1", "thumb_joint_2", "thumb_joint_3"],
+            "center_offset": [0.00, 0.0, -0.0],
+            "human_hand_id": 4
+        }
+    ]
+}

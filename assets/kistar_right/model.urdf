@@ -670,7 +670,7 @@
 
 <joint name="middle_joint_0" type="revolute">
   <axis xyz="1 0 0"/>
-  <limit effort="10.0" lower="-0.261799" upper="0.261799" velocity="6.283"/>
+  <limit effort="10.0" lower="-0.081799" upper="0.081799" velocity="6.283"/>
   <origin rpy="0. 0. 0." xyz="0.02325 0. 0.0047"/>
   <parent link="middle_basemotor"/>
   <child link="middle_link_0"/>

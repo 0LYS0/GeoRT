@@ -6,19 +6,39 @@ Welcome! This repository contains the code for the paper "Geometric Retargeting:
 
 ![Demo GIF](./images/demo.gif)
 ## Installation
-If you have already got a conda environment with torch, you just need these packages
+<b>If you have already got a conda environment with torch</b>, you just need these packages
+If only retargeting network is needed, it is enough to install geort package only (<code>pip install -e .</code>)
 ```
-pip install trimesh open3d sapien zmq
+pip install trimesh open3d sapien zmq  # if visualization is required...
 pip install -e .
 ```
 
 Otherwise, we recommend using a virtual environment to install the required packages. To install the required packages, run the following command:
 ```
-conda create --name geort python=3.8
-pip install -r requirements.txt
+conda create --name geort python=3.10
+pip install -r requirements.txt # Here, default pytorch is 2.5.0 with cuda=12.1
 pip install -e .
 ```
 ## Quick Overview
+
+run example code
+
+```shell
+jupyter notebook ./example_manus.ipynb
+```
+
+**Note**
+To use your own robot hand, please provide URDF and config file!
+
+**Note**
+To train with modified robot hand kinematics, remove trained FK model in <code>checkpoint/[HAND].pth</code> and FK dataset in <code>data/[HAND].npy</code>first before retraining!
+
+**Warning**
+You cannot open both sapien and isaacsim
+
+
+<details><summary> OFFICIAL GUIDE </summary>
+
 Upon completion, you will be able to train GeoRT and deploy the checkpoint in a clean and straightforward way. 
 ### Training (1-2min):
 ```
@@ -77,7 +97,7 @@ such as
 ```
 python geort/env/hand.py --hand allegro_right
 ```
-<span style="color:red"> If there is any segmentation error, please simplify the collision meshes or just remove all the `<collision>` fields in your URDF. </span> See the [Notes and Troubleshooting](#notes-and-troubleshooting) section.
+<span style="color:red"> If there is any segmentation error, please simplify the collision meshes or just remove all the `collision` fields in your URDF. </span> See the [Notes and Troubleshooting](#notes-and-troubleshooting) section.
 
 ### Step 2: Collect human hand mocap data.
 Now we need to collect some human hand data for training the retargeting model. We put an example human recording dataset in data folder. You can add your own data to that folder and here is a template python script to do this.
@@ -165,6 +185,10 @@ For instance, if we have ``human.npy`` in the ``data`` folder
 ```
 python ./geort/mocap/replay_evaluation.py -hand allegro_right -ckpt_tag YOUR_CKPT -data human
 ```
+
+</details>
+
+
 ## Contributing
 Feel free to contribute your robot model and mocap system to the GeoRT repository!
 
